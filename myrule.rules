@@ -1,0 +1,8 @@
+# PING
+alert icmp any any -> any any (sid: 10; msg:"ICMP test detected"; classtype:icmp-event; rev:1;)
+
+# SCANNING
+alert icmp any any -> any any (sid:1; msg:"Host discovery (nmap ping scan) attempt"; dsize:0; itype:8; reference:arachnids,162; classtype:attempted-recon; rev:1;)
+
+# DOS (SYN Packet Flooding)
+alert tcp any any -> any any (sid: 2; msg: "TCP SYN packet flooding (simple or distributed) attempt"; threshold: type both, track by_dst, count 10000, seconds 60; flow:stateless; flags:S,12; rev:1;)
