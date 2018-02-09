@@ -16,8 +16,7 @@ Namun terdapat satu masalah yang kemudian muncul, yaitu Snort tidak dapat berada
 Fuzzy logic diimplementasikan untuk mengatasi masalah tersebut sehingga tercipta IPS yang dapat beradaptasi terhadap frekuensi serangan dan jenis serangan.
 
 ## Cara Kerja
-![Topologi](https://github.com/rifqitama16/tugas-akhir/blob/master/doc/Topologi%202.png)
-![Flow Chart](https://github.com/rifqitama16/tugas-akhir/blob/master/doc/Flowchart%20-%20Block%20Diagram.png)
+<img src="https://github.com/rifqitama16/tugas-akhir/blob/master/doc/Topologi%202.png" width="700" height="500">
 
 ## Cara Penggunaan
 ![Contoh](https://github.com/rifqitama16/tugas-akhir/blob/master/doc/1.png)
