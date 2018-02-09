@@ -1,5 +1,5 @@
 # tugas-akhir
-Perancangan adaptive Intrusion Prevention System (IPS) untuk pencegahan penyerangan di jaringan Software-Defined Network (SDN) menggunakan metode fuzzy logic. Pengembangan sistem ini melibatkan:
+Perancangan adaptive Intrusion Prevention System (IPS) untuk pencegahan penyerangan di jaringan Software-Defined Network (SDN) menggunakan fuzzy logic. Pengembangan sistem ini melibatkan:
 * [Ryu](https://osrg.github.io/ryu/) sebagai SDN controller
 * [Mininet](http://mininet.org/) sebagai emulator jaringan
 * [Snort](https://www.snort.org) sebagai IPS dengan jenis signature-based
