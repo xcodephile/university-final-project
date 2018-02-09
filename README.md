@@ -20,7 +20,7 @@ Fuzzy logic diimplementasikan untuk mengatasi masalah tersebut sehingga tercipta
 ## Cara Kerja
 Snort yang digunakan sebagai IPS diinstal pada application plane sedangkan Ryu sebagai controller terdapat di control plane. Tiap lalu lintas yang ada di jaringan akan terlebih dahulu melewati Ryu yang selanjutnya akan diperiksa oleh Snort berdasarkan pencocokan dengan basis data yang telah didefinisikan sebelumnya (ada di `myrules.rules`). Jika dinyatakan aman, maka oleh Ryu akan langsung diteruskan ke tujuan, namun jika terindikasi berbahaya, maka Snort akan mengirim peringatan serta mengatur lama waktu pemblokiran dengan durasi awal 10 menit. Jika host terus melakukan serangan dalam masa waktu kurang dari atau sama dengan 10 menit, maka waktu blokir akan ditetapkan sesuai dengan frekuensi dan jenis serangan.
 
-Proses dimulai dari file log `alert.csv` yang merupakan keluaran dari Snort yang berisi timestamp, alamat IP asal, alamat IP tujuan, protokol, dan pesan. Oleh `hostInspector.sh` akan mengambil baris terakhir dari log dan mencari selisih waktu antara serangan terakhir dan serangan sebelumnya dari sebuah host. Fuzzy (semua file yang berekstensi .py) hanya akan dieksekusi jika selisih waktu (interval) penyerangan lebih kecil atau sama dengan 10 menit. Keluaran dari fuzzy adalah durasi waktu blokir dalam satuan detik yang nantinya akan berfungsi untuk menjeda proses. Berkas `block.sh` berfungsi untuk mengirimkan flow entry pemblokiran ke Ryu via REST API. Berkas `unblock.sh` akan dieksekusi setelah durasi telah mencapai 0 detik dan akan menghapus flow entry pemblokiran.
+Proses dimulai dari file log `alert.csv` yang merupakan keluaran dari Snort yang berisi timestamp, alamat IP asal, alamat IP tujuan, protokol, dan pesan. Oleh `hostInspector.sh` akan mengambil baris terakhir dari log dan mencari selisih waktu antara serangan terakhir dan serangan sebelumnya dari sebuah host. Fuzzy (semua file yang berekstensi .py) hanya akan dieksekusi jika selisih waktu (interval) penyerangan lebih kecil atau sama dengan 10 menit. Keluaran dari fuzzy adalah durasi waktu blokir dalam satuan detik yang nantinya akan berfungsi untuk menjeda proses. File `block.sh` berfungsi untuk mengirimkan flow entry pemblokiran ke Ryu via REST API. File `unblock.sh` akan dieksekusi setelah durasi telah mencapai 0 detik dan akan menghapus flow entry pemblokiran.
 
 Adapun topologi yang digunakan adalah sebagai berikut.
 <p align="center"><img src="https://github.com/rifqitama16/tugas-akhir/blob/master/doc/Topologi%202.png" width="550" height="400"></p>
@@ -48,7 +48,7 @@ Lakukan proses instalasi Ryu, Mininet, dan Snort terlebih dahulu yang dokumentas
 
     `bash ~/hostInspector.sh`
 
-Untuk Pengujian, lakukan uji serangan yang sesuai dengan basis data serangan Snort di file `myrules.rules` yaitu port scanning dan DoS.
+Untuk Pengujian, lakukan uji serangan yang sesuai dengan basis data serangan Snort di file `myrules.rules` yaitu host discovery (menggunakan metode port scanning) dan DoS agar peringatan bahwa telah terjadi serangan dapat tersimpan ke /var/log/snort/alert.csv.
 
 `attacker nmap -v -n -sP --send-ip 192.168.0.0/29`
 
@@ -61,17 +61,17 @@ Sedangkan untuk DoS dapat memanfaatkan tools hping3.
 ## Hasil
 Berikut contoh screenshot ketika mencoba ping ke host yang sedang diblokir.
 
-<p align="center"><img src="https://github.com/rifqitama16/tugas-akhir/blob/master/doc/2.png" width="370" height="150"></p>
+<p align="center"><img src="https://github.com/rifqitama16/tugas-akhir/blob/master/doc/2.png" width="370" height="130"></p>
 
 Dua gambar di bawah ini menjelaskan bagaimana hubungan antara interval (selisih) waktu serangan suatu host dengan durasi blokir untuk masing-masing jenis serangan.
 
-### Port Scanning
+### Host Discovery
 <p align="center"><img src="https://github.com/rifqitama16/tugas-akhir/blob/master/doc/hasil1-scanning(host-discovery).png" width="600" height="240"></p>
 
 ## DoS
 <p align="center"><img src="https://github.com/rifqitama16/tugas-akhir/blob/master/doc/hasil2-DoS.png" width="600" height="240"></p>
 
 ## Tautan Luar
-* Paper IEEE (tba)
+* Paper IEEE (TBA)
 * [Buku Tugas Akhir](https://repository.telkomuniversity.ac.id/pustaka/138374/perancangan-dan-implementasi-adaptive-intrusion-prevention-system-ips-untuk-pencegahan-penyerangan-pada-arsitektur-software-defined-network-sdn-.html)
 * [Referensi 1](http://ieeexplore.ieee.org/document/6834762/), [Referensi 2](http://ieeexplore.ieee.org/document/7014181/), dan [Referensi 3](http://ieeexplore.ieee.org/document/4599918/)
