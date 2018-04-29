@@ -36,7 +36,7 @@ Lakukan proses instalasi Ryu, Mininet, dan Snort terlebih dahulu yang dokumentas
 
 2. Jalankan Mininet dengan opsi controller remote (diarahkan ke Ryu yang telah running) serta custom topologi yang ada di file `topologi.py`.
 
-    `mn --custom ~/mininet/custom/topologi.py --topo mytopo --controller remote`
+    `mn --custom ~/mininet/custom/topologi.py --topo mytopo --controller remote --switch ovsk,protocols=OpenFlow13`
 
 3. Secara default lalu lintas dari dan ke seluruh host akan diblokir oleh Ryu sehingga diperlukan penambahan flow entry dengan cara menjalankan file `flowEntry.sh`.
 
