@@ -44,7 +44,7 @@ Lakukan proses instalasi Ryu, Mininet, dan Snort terlebih dahulu yang dokumentas
 
 4. Jalankan Snort dengan interface menggunakan s1-eth1 (switch 1 port eth-1).
 
-    `snort -A full -i s1-eth1 -c /etc/snort/snort.conf -l /var/log/snort`
+    `snort -i s1-eth1 -c /etc/snort/snort.conf -l /var/log/snort`
 
 5. Jalankan file `hostInspector.sh`.
 
