@@ -74,6 +74,6 @@ Dua gambar di bawah ini menjelaskan bagaimana hubungan antara interval (selisih)
 <p align="center"><img src="https://github.com/rifqitama16/tugas-akhir/blob/master/doc/hasil2-DoS.png" width="600" height="240"></p>
 
 ## Tautan Luar
-* Paper IEEE (TBA)
+* [Paper IEEE](https://ieeexplore.ieee.org/document/8528735)
 * [Buku Tugas Akhir](https://repository.telkomuniversity.ac.id/pustaka/138374/perancangan-dan-implementasi-adaptive-intrusion-prevention-system-ips-untuk-pencegahan-penyerangan-pada-arsitektur-software-defined-network-sdn-.html)
 * [Referensi 1](http://ieeexplore.ieee.org/document/6834762/), [Referensi 2](http://ieeexplore.ieee.org/document/7014181/), dan [Referensi 3](http://ieeexplore.ieee.org/document/4599918/)
