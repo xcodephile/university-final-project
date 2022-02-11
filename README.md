@@ -1,4 +1,4 @@
-# tugas-akhir
+# university-final-project a.k.a Skripsi
 <i>Perancangan adaptive Intrusion Prevention System (IPS) untuk pencegahan penyerangan di jaringan Software-Defined Network (SDN) menggunakan fuzzy logic.</i>
 
 Pengembangan sistem ini melibatkan:
